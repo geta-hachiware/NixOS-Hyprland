@@ -90,7 +90,7 @@
       ];
 
       layerrule = [
-        #"blur, logout_dialog"
+        "blur, logout_dialog"
         "blur, class:^(swww)$"
         "blur, rofi"
         "blur, swaync-control-center"
