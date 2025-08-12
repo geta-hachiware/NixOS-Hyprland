@@ -136,7 +136,7 @@
       executable = true;
     };
   };
-
+  
   home.sessionPath = [
     "$HOME/.local/bin"
     "$HOME/.config/hypr/scripts"
