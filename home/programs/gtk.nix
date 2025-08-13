@@ -8,8 +8,8 @@
     };
 
     font = {
-      name = "Lekton Nerd Font Mono";
-      size = 12;
+      name = "JetBrainsMono Nerd Font";
+      size = 10;
     };
 
     gtk3.extraConfig = {
@@ -22,7 +22,7 @@
 
   qt = {
     enable = true;
-    platformTheme = "gtk";
+    platformTheme.name = "gtk";
     style = {
       name = "kvantum";
     };
