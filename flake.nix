@@ -47,6 +47,7 @@
       ...
       }@inputs:
     let
+      myUserName = "nate";
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
@@ -61,9 +62,9 @@
           specialArgs = {
             inherit inputs;
           };
-          modules = [
+          modules = with inputs; [
             ./nixos/configuration.nix
-            inputs.spicetify-nix.nixosModules.default
+            spicetify-nix.nixosModules.default
           ];
         };
       };
@@ -73,10 +74,11 @@
 
           extraSpecialArgs = { 
             inherit system inputs;
+            inherit myUserName;
           };
-          modules = [ 
+          modules = with inputs; [ 
             ./home/home.nix
-            inputs.nixcord.homeModules.nixcord
+            nixcord.homeModules.nixcord
           ];
         };
       };

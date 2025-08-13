@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, system, ... }:
+{ config, pkgs, inputs, system, myUserName, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -75,7 +75,6 @@
     brightnessctl
     swaynotificationcenter
     swaybg
-    waypaper
     wlogout
     cmatrix
     imv

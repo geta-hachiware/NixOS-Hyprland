@@ -30,9 +30,9 @@
     ];
     fontconfig = {
       defaultFonts = {
-        serif = ["FireCode Nerd Font"];
-        sansSerif = ["FiraCode Nerd Font"];
-        monospace = ["FiraCode Nerd Font Mono"];
+        serif = ["Lekton Nerd Font"];
+        sansSerif = ["Lekton Nerd Font"];
+        monospace = ["Lekton Nerd Font Mono"];
       };
     };
   };
