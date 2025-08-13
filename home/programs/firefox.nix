@@ -79,86 +79,94 @@ in {
           "app.normandy.enabled" = false;
         };
 
-        bookmarks = [
-          {
-            name = "nix";
-            toolbar = false;
-            bookmarks = [
-              {
-                name = "Nix Package";
-                keyword = "np";
-                url = "https://search.nixos.org/packages?channel=unstable";
-              }
-              {
-                name = "Nix Options";
-                keyword = "no";
-                url = "https://search.nixos.org/options?channel=unstable";
-              }
-            ];
-          }
-          {
-            name = "uhh";
-            toolbar = false;
-            bookmarks = [
-              {
-                name = "ProtonMail";
-                keyword = "ma";
-                url = "https://mail.proton.me/";
-              }
-              {
-                name = "Anilist";
-                keyword = "an";
-                url = "https://anilist.co";
-              }
-              {
-                name = "ChatGPT";
-                keyword = "ch";
-                url = "https://chat.openai.com";
-              }
-              {
-                name = "GitHub";
-                keyword = "gh";
-                url = "https://github.com";
-              }
-              {
-                name = "Discord";
-                keyword = "di";
-                url = "https://discord.com/channels/@me";
-              }
-              {
-                name = "Element";
-                keyword = "el";
-                url = "https://app.element.io";
-              }
-              {
-                name = "Nhentai";
-                keyword = "nh";
-                url = "https://nhentai.net";
-              }
-            ];
-          }
-          {
-            name = "fml";
-            toolbar = false;
-            bookmarks = [
-              {
-                name = "Twitter";
-                keyword = "tw";
-                url = "https://twitter.com";
-              }
-              {
-                name = "YouTube";
-                keyword = "yo";
-                url = "https://YouTube.com";
-              }
-              {
-                name = "Whatsapp";
-                keyword = "we";
-                url = "https://web.whatsapp.com";
-              }
-            ];
-          }
-        ];
+        bookmarks = {
+          force = true;
+          settings = [
+            {
+              name = "nix";
+              toolbar = false;
+              bookmarks = [
+                {
+                  name = "Nix Package";
+                  keyword = "np";
+                  url = "https://search.nixos.org/packages?channel=unstable";
+                }
+                {
+                  name = "Nix Options";
+                  keyword = "no";
+                  url = "https://search.nixos.org/options?channel=unstable";
+                }
+              ];
+            }
+            {
+              name = "uhh";
+              toolbar = false;
+              bookmarks = [
+                {
+                  name = "ProtonMail";
+                  keyword = "ma";
+                  url = "https://mail.proton.me/";
+                }
+                {
+                  name = "Anilist";
+                  keyword = "an";
+                  url = "https://anilist.co";
+                }
+                {
+                  name = "ChatGPT";
+                  keyword = "ch";
+                  url = "https://chat.openai.com";
+                }
+                {
+                  name = "GitHub";
+                  keyword = "gh";
+                  url = "https://github.com";
+                }
+                {
+                  name = "Discord";
+                  keyword = "di";
+                  url = "https://discord.com/channels/@me";
+                }
+                {
+                  name = "Element";
+                  keyword = "el";
+                  url = "https://app.element.io";
+                }
+                {
+                  name = "Nhentai";
+                  keyword = "nh";
+                  url = "https://nhentai.net";
+                }
+                {
+                  name = "HentaiHaven";
+                  keyword = "hh";
+                  url = "https://hentaihaven.com";
+                }
+              ];
+            }
+            {
+              name = "fml";
+              toolbar = false;
+              bookmarks = [
+                {
+                  name = "Twitter";
+                  keyword = "tw";
+                  url = "https://twitter.com";
+                }
+                {
+                  name = "YouTube";
+                  keyword = "yo";
+                  url = "https://YouTube.com";
+                }
+                {
+                  name = "Whatsapp";
+                  keyword = "we";
+                  url = "https://web.whatsapp.com";
+                }
+              ]; 
+            }
+          ];
+        }; 
 
         search = {
           default = "Brave";
@@ -193,6 +201,11 @@ in {
               updateInterval = 24 * 60 * 60 * 1000;
               urls = [{template = "https://www.nhentai.net/search?q={searchTerms}";}];
               definedAliases = ["@nh"];
+            };
+            "HentaiHaven" = {
+              updateInterval = 24 * 60 * 60 * 1000;
+              urls = [{template = "https://www.hentaihaven.com/search?q={searchTerms}";}];
+              definedAliases = ["@hh"]; 
             };
             "Google".metaData.alias = "g";
           };

@@ -28,7 +28,7 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -73,8 +73,7 @@
           inherit pkgs;
 
           extraSpecialArgs = { 
-            inherit system inputs;
-            inherit myUserName;
+            inherit myUserName system inputs;
           };
           modules = with inputs; [ 
             ./home/home.nix

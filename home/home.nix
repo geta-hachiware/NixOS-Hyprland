@@ -46,6 +46,7 @@
     ffmpegthumbnailer
     imagemagick
     swappy
+    nsxiv
 
     # GTK / GUI / Theming
     libnotify
@@ -77,7 +78,6 @@
     swaybg
     wlogout
     cmatrix
-    imv
     hyprlock
     hypridle
   ];

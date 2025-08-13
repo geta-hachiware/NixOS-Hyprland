@@ -4,7 +4,7 @@
   in {
     programs.spicetify = {
       enable = true;
-       theme = spicePkgs.themes.catppuccin;
+        theme = spicePkgs.themes.catppuccin;
       # theme = spicePkgs.themes.TokyoNight;
       # theme = spicePkgs.themes.defaultDynamic
       # Theme for catppuccin
@@ -14,7 +14,7 @@
       # colorScheme = "RosePine";
       # colorScheme = "CatppuccinMocha";
       # colorScheme = "TokyoNight";
-      # colorScheme = "Storm";
+      #  colorScheme = "Storm";
       # Theme for dynamic
       # colorScheme = "Base";
         enabledExtensions = with spicePkgs.extensions; [
