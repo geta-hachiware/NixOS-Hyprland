@@ -8,6 +8,6 @@
     ./locale.nix
     ./packages.nix
     ./steam.nix
-    ./session-variables.nix
+    ./sessionvariables.nix
   ];
 }

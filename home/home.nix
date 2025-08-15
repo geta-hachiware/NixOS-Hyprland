@@ -56,7 +56,6 @@
     xdg-user-dirs
 
     # Network / Connectivity
-    blueman
     networkmanagerapplet
 
     # Perfomance Monitoring
@@ -77,12 +76,21 @@
     # other utilities
     brightnessctl
     swaynotificationcenter
-    swaybg
     wlogout
     cmatrix
     hyprlock
     hypridle
-  ];
+  ]; 
+
+  xdg.portal = {
+    enable = true;
+    config.common.default = "hyprland";
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -130,7 +138,6 @@
       executable = true;
     };
     
-    #".geta/home/rofi/image/makima.jpg".source = ./rofi/image/makima.jpg;
     ".config/rofi/launcher/rofi-launcher-config.rasi".source = ./rofi/launcher/rofi-launcher-config.rasi;
     ".local/bin/launcher" = {
       source = ./rofi/launcher/launcher.sh;

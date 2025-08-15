@@ -2,16 +2,18 @@
 {
   environment.systemPackages = with pkgs; [
     nano
-    curl
     git
     vim
-    bluez
-    bluez-tools
     wireplumber
     iproute2
     wirelesstools
     iputils
     polkit_gnome
+    bibata-cursors
+    sddm-astronaut # Overlayed
+    pkgs.kdePackages.qtsvg
+    pkgs.kdePackages.qtmultimedia
+    pkgs.kdePackages.qtvirtualkeyboard
   ];
 
   services.flatpak.enable = true;
