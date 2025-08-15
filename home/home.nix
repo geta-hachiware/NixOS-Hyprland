@@ -82,16 +82,6 @@
     hypridle
   ]; 
 
-  xdg.portal = {
-    enable = true;
-    config.common.default = "hyprland";
-    extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
-    ];
-  };
-
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
