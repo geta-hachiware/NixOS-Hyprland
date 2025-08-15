@@ -3,7 +3,7 @@
   environment.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
-    TERM = "ghostty";
+    TERM = "alacritty";
   };
   xdg.portal = {
     enable = true;

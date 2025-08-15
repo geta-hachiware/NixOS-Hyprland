@@ -23,6 +23,7 @@
     cava
     deadbeef
     pamixer
+    alsa-utils
     playerctl
     pavucontrol
     sound-theme-freedesktop
