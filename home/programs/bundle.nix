@@ -4,7 +4,7 @@
     ./nixcord.nix
     ./mpv.nix
     ./games.nix
-    ./kitty.nix
+    ./alacritty.nix
     ./gtk.nix
     ./xdg.nix
     ./git.nix

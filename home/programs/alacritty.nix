@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 {
-  programs = {
-    kitty = {
-      enable = true;
-    };
+  programs.alacritty= {
+    enable = true;
+
     font = {
       name = "FiraCode Nerd Font";
       size = 10.0;
