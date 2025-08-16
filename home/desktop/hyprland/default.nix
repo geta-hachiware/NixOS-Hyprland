@@ -255,7 +255,7 @@
         vrr = 1; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only)
         vfr = true;
         enable_swallow = true;
-        swallow_regex = "^(ghostty)$";
+        swallow_regex = "^(ghostty|alacritty)$";
       };
       
       xwayland = {
@@ -302,12 +302,11 @@
       #Binds
       bind = [
         # Terminal App Launcher
-        "$mainMod, Return, exec, ghostty" # terminal
+        "$mainMod, Return, exec, alacritty" # terminal
 	      "$mainMod, Space, exec, launcher" # app launcher
         "$mainMod, T, exec, [float] thunar" # file manager
         "$mainMod+Shift, C, exec, clipManager.sh" #clipboard
         "$mainMod, W, exec, wallpaper" # wallpaper picker
-        "$mainMod, S, exec, wallpaper_selector.sh"
         "$mainMod+Shift, N, exec, swaync-client -t -sw" # swayNC panel
 
         # Screenshot/Screencapture
