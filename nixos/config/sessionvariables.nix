@@ -3,8 +3,7 @@
   environment.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";
-    BROWSER = "firefox";
-    TERM = "ghostty";
+    TERM = "xterm-256color";
   };
 
   xdg.portal = {

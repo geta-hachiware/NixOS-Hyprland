@@ -53,6 +53,7 @@
   };
   
   programs.zsh.enable = true;
+
   #hardware
   hardware = {
     #tablet

@@ -28,12 +28,6 @@
     };
   };
 
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
-
   home.pointerCursor = {
     gtk.enable = true;
     hyprcursor = {

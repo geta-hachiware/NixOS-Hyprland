@@ -1,21 +1,28 @@
-{ config, inputs, pkgs, ... }:
+{ config, pkgs, ... }: 
 {
-  programs = {
-    ghostty = {
-      enable = true;
-      settings = {
-        font-size = 11;
-        window-decoration = false;
-        confirm-close-surface = false;
-        font-feature = ["-liga" "-dlig" "-calt"];
-        # theme = "Adventure";
-        theme = "rose-pine-moon";
-        # theme = "/home/maike/.config/ghostty/matugen.theme"; #theme path and folder needs to be created first ls -l /home/maike/.config/ghostty/themes/matugen.theme
-        # background =000000;
-        # background-opacity = 0.85;
-        # background-opacity = 0.25;
-        background-blur = 4;
-      };
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+
+    settings = {
+      theme = "rose-pine-moon";
+      font-size = 12;
+      font-family = "FiraCode Nerd Font Mono";
+      background-opacity = 0.8;
+      background-blur = true;
+
+      # Care on MacOS if false
+      window-vsync = false;
+      window-decoration = "none";
+      window-padding-x = 10;
+      window-padding-y = 10;
+      window-height = 23;
+      window-width = 80;
+
+      focus-follows-mouse = true;
+      click-repeat-interval = 0;
+
+      confirm-close-surface = false;
     };
   };
 }

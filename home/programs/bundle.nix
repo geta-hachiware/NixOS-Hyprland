@@ -5,6 +5,7 @@
     ./mpv.nix
     ./games.nix
     ./ghostty.nix
+    ./alacritty.nix
     ./gtk.nix
     ./xdg.nix
     ./git.nix
