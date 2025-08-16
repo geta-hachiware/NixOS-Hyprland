@@ -50,15 +50,13 @@
       username = "nate";
       system = "x86_64-linux";
       pkgs = import nixpkgs {
-        inherit system;
+        inherit system overlays;
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
-      overlays = {
-        nixpkgs.overlays = with inputs; [
-          (import ./pkgs)
-        ];
-      };
+      overlays = [
+        (import ./pkgs)
+      ];
     in {
       nixosConfigurations = {
         nixos = lib.nixosSystem {
@@ -78,7 +76,7 @@
           inherit pkgs;
 
           extraSpecialArgs = { 
-            inherit username system overlays inputs;
+            inherit username system inputs;
           };
           modules = with inputs; [ 
             ./home/home.nix

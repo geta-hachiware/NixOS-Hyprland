@@ -9,9 +9,10 @@
       osc = "no";
       osd-bar = "no";
       profile = "gpu-hq";
-      vo = "gpu";
+      vo = "gpu-next";
+      gpu-api = "vulkan";
       loop-file = "inf";
-      hwdec = "vaapi";
+      hwdec = "nvdec";
       scale = "ewa_lanczossharp";
       cscale = "ewa_lanczossharp";
       save-position-on-quit = "yes";
@@ -28,7 +29,7 @@
       demuxer-readahead-secs = "60";
       border = "no";
       keepaspect-window = "no";
-      screenshot-directory = config.xdg.userDirs.pictures;
+      screenshot-directory = config.xdg.userDirs.pictures; 
     };
     scriptOpts = {
       webtorrent.path = "${config.xdg.cacheHome}/mpv";
