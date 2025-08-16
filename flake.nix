@@ -47,27 +47,25 @@
       ...
       }@inputs:
     let
-      myUserName = "nate";
+      username = "nate";
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
-
       overlays = {
-      nixpkgs.overlays = with inputs; [
-        assets.overlays.default
-        (import ./pkgs)
-      ];
-    };
+        nixpkgs.overlays = with inputs; [
+          (import ./pkgs)
+        ];
+      };
     in {
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
 
           specialArgs = {
-            inherit inputs;
+            inherit username inputs;
           };
           modules = with inputs; [
             ./nixos/configuration.nix
@@ -76,11 +74,11 @@
         };
       };
       homeConfigurations = {
-        nate = home-manager.lib.homeManagerConfiguration {
+        ${username} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
           extraSpecialArgs = { 
-            inherit myUserName system inputs;
+            inherit username system overlays inputs;
           };
           modules = with inputs; [ 
             ./home/home.nix

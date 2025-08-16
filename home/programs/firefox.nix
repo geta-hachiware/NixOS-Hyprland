@@ -1,7 +1,7 @@
 {
   inputs,
   pkgs,
-  myUserName,
+  username,
   ...
 }: let
   betterfox = pkgs.fetchFromGitHub {
@@ -21,10 +21,10 @@ in {
     enable = true;
     nativeMessagingHosts = [pkgs.tridactyl-native];
     profiles = {
-      ${myUserName} = {
+      ${username} = {
         id = 0;
         isDefault = true;
-        name = myUserName;
+        name = username;
         extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
           refined-github
           sponsorblock

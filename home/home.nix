@@ -1,10 +1,10 @@
-{ config, pkgs, inputs, system, myUserName, ... }:
+{ config, pkgs, inputs, system, username, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "nate";
-  home.homeDirectory = "/home/nate";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
   home.stateVersion = "25.05";
 
   imports = [

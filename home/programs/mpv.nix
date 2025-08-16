@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   programs.mpv = {
     enable = true;
     config = {
@@ -19,7 +21,7 @@
       slang = "en,eng";
       alang = "ja,jp,jpn,en,eng";
       image-display-duration = "inf";
-      osd-font = config.stylix.fonts.monospace.name;
+      osd-font = "JetBrains Mono Nerd Font";
       cache = "yes";
       demuxer-max-bytes = "300MiB";
       demuxer-max-back-bytes = "50MiB";
