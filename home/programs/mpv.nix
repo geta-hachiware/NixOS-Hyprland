@@ -1,117 +1,91 @@
-{config, pkgs, ...}: {
+{ pkgs, config, ... }:
+
+{
   programs.mpv = {
     enable = true;
-    scripts = with pkgs.mpvScripts; [
-      thumbnail
-      mpris
-    ];
-    bindings = rec {
-      MBTN_LEFT_DBL = "cycle fullscreen";
-      MBTN_RIGHT = "cycle pause";
-      MBTN_BACK = "playlist-prev";
-      MBTN_FORWARD = "playlist-next";
-      WHEEL_DOWN = "seek -5";
-      WHEEL_UP = "seek 5";
-      WHEEL_LEFT = "seek -60";
-      WHEEL_RIGHT = "seek 60";
-
-      h = "no-osd seek -5 exact";
-      LEFT = h;
-      l = "no-osd seek 5 exact";
-      RIGHT = l;
-      j = "seek -30";
-      DOWN = j;
-      k = "seek 30";
-      UP = k;
-
-      H = "no-osd seek -1 exact";
-      "Shift+LEFT" = "no-osd seek -1 exact";
-      L = "no-osd seek 1 exact";
-      "Shift+RIGHT" = "no-osd seek 1 exact";
-      J = "seek -300";
-      "Shift+DOWN" = "seek -300";
-      K = "seek 300";
-      "Shift+UP" = "seek 300";
-
-      "Ctrl+LEFT" = "no-osd sub-seek -1";
-      "Ctrl+h" = "no-osd sub-seek -1";
-      "Ctrl+RIGHT" = "no-osd sub-seek 1";
-      "Ctrl+l" = "no-osd sub-seek 1";
-      "Ctrl+DOWN" = "add chapter -1";
-      "Ctrl+j" = "add chapter -1";
-      "Ctrl+UP" = "add chapter 1";
-      "Ctrl+k" = "add chapter 1";
-
-      "Alt+LEFT" = "frame-back-step";
-      "Alt+h" = "frame-back-step";
-      "Alt+RIGHT" = "frame-step";
-      "Alt+l" = "frame-step";
-
-      PGUP = "add chapter 1";
-      PGDWN = "add chapter -1";
-
-      u = "revert-seek";
-
-      "Ctrl++" = "add sub-scale 0.1";
-      "Ctrl+-" = "add sub-scale -0.1";
-      "Ctrl+0" = "set sub-scale 0";
-
-      q = "quit";
-      Q = "quit-watch-later";
-      "q {encode}" = "quit 4";
-      p = "cycle pause";
-      SPACE = p;
-      f = "cycle fullscreen";
-
-      n = "playlist-next";
-      N = "playlist-prev";
-
-      o = "show-progress";
-      O = "script-binding stats/display-stats-toggle";
-      "`" = "script-binding console/enable";
-      ":" = "script-binding console/enable";
-
-      z = "add sub-delay -0.1";
-      x = "add sub-delay 0.1";
-      Z = "add audio-delay -0.1";
-      X = "add audio-delay 0.1";
-
-      "1" = "add volume -1";
-      "2" = "add volume 1";
-      s = "cycle sub";
-      v = "cycle video";
-      a = "cycle audio";
-      S = ''cycle-values sub-ass-override "force" "no"'';
-      PRINT = "screenshot";
-      c = "add panscan 0.1";
-      C = "add panscan -0.1";
-      PLAY = "cycle pause";
-      PAUSE = "cycle pause";
-      PLAYPAUSE = "cycle pause";
-      PLAYONLY = "set pause no";
-      PAUSEONLY = "set pause yes";
-      STOP = "stop";
-      CLOSE_WIN = "quit";
-      "CLOSE_WIN {encode}" = "quit 4";
-      "Ctrl+w" = ''set hwdec "no"'';
-      # T = "script-binding generate-thumbnails";
-    };
     config = {
       osc = "no";
-      resume-playback-check-mtime = true;
-      # ao = "alsa";
-      audio-file-auto = "fuzzy";
-      sub-auto = "fuzzy";
-      # gpu-context = "waylandvk";
-      wayland-edge-pixels-pointer = 0;
-      wayland-edge-pixels-touch = 0;
-      screenshot-format = "webp";
-      screenshot-webp-lossless = true;
-      screenshot-directory = "${config.home.homeDirectory}/Pictures/Screenshots/mpv";
-      screenshot-sw = true;
-      # cache-dir = "${config.xdg.cacheHome}/mpv";
-      input-default-bindings = false;
+      osd-bar = "no";
+      profile = "gpu-hq";
+      vo = "gpu";
+      loop-file = "inf";
+      hwdec = "vaapi";
+      scale = "ewa_lanczossharp";
+      cscale = "ewa_lanczossharp";
+      save-position-on-quit = "yes";
+      video-sync = "display-resample";
+      interpolation = "yes";
+      tscale = "oversample";
+      slang = "en,eng";
+      alang = "ja,jp,jpn,en,eng";
+      image-display-duration = "inf";
+      osd-font = config.stylix.fonts.monospace.name;
+      cache = "yes";
+      demuxer-max-bytes = "300MiB";
+      demuxer-max-back-bytes = "50MiB";
+      demuxer-readahead-secs = "60";
+      border = "no";
+      keepaspect-window = "no";
+      screenshot-directory = config.xdg.userDirs.pictures;
     };
+    scriptOpts = {
+      webtorrent.path = "${config.xdg.cacheHome}/mpv";
+      youtube-search = {
+        key_youtube_search_replace = "CTRL+SHIFT+s";
+        key_youtube_music_search_replace = "";
+        key_youtube_search_append = "";
+        key_youtube_music_search_append = "";
+        key_search_results_update = "";
+        search_results = 1;
+        osd_message_duration = 0;
+      };
+    };
+    bindings = {
+      "l" = "seek 5";
+      "h" = "seek -5";
+      "a" = "add chapter -1";
+      "d" = "add chapter 1";
+      "k" = "seek 60";
+      "j" = "seek -60";
+      "]" = "add speed 0.1";
+      "[" = "add speed -0.1";
+      "w" = "cycle-values speed 1 1.5 2";
+      "g" = "script-binding memo-history";
+      "tab" = "script-binding uosc/toggle-ui";
+      "c" = "script-binding uosc/chapters";
+      "q" = "script-binding uosc/stream-quality";
+      "t" = "script-binding uosc/audio";
+      "shift+f" = "script-binding uosc/keybinds";
+      "shift+p" = "script-binding uosc/items";
+      "s" = "script-binding uosc/subtitles";
+      "u" = "script-message-to youtube_upnext menu";
+      "shift+s" = "async screenshot";
+      "CTRL+1" = ''
+        no-osd change-list glsl-shaders set "${pkgs.anime4k}/Anime4K_Clamp_Highlights.glsl:${pkgs.anime4k}/Anime4K_Restore_CNN_VL.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_VL.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x2.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x4.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_M.glsl"; show-text "Anime4K: Mode A (HQ)"'';
+      "CTRL+2" = ''
+        no-osd change-list glsl-shaders set "${pkgs.anime4k}/Anime4K_Clamp_Highlights.glsl:${pkgs.anime4k}/Anime4K_Restore_CNN_Soft_VL.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_VL.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x2.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x4.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_M.glsl"; show-text "Anime4K: Mode B (HQ)"'';
+      "CTRL+3" = ''
+        no-osd change-list glsl-shaders set "${pkgs.anime4k}/Anime4K_Clamp_Highlights.glsl:${pkgs.anime4k}/Anime4K_Upscale_Denoise_CNN_x2_VL.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x2.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x4.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_M.glsl"; show-text "Anime4K: Mode C (HQ)"'';
+      "CTRL+4" = ''
+        no-osd change-list glsl-shaders set "${pkgs.anime4k}/Anime4K_Clamp_Highlights.glsl:${pkgs.anime4k}/Anime4K_Restore_CNN_VL.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_VL.glsl:${pkgs.anime4k}/Anime4K_Restore_CNN_M.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x2.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x4.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_M.glsl"; show-text "Anime4K: Mode A+A (HQ)"'';
+      "CTRL+5" = ''
+        no-osd change-list glsl-shaders set "${pkgs.anime4k}/Anime4K_Clamp_Highlights.glsl:${pkgs.anime4k}/Anime4K_Restore_CNN_Soft_VL.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_VL.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x2.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x4.glsl:${pkgs.anime4k}/Anime4K_Restore_CNN_Soft_M.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_M.glsl"; show-text "Anime4K: Mode B+B (HQ)"'';
+      "CTRL+6" = ''
+        no-osd change-list glsl-shaders set "${pkgs.anime4k}/Anime4K_Clamp_Highlights.glsl:${pkgs.anime4k}/Anime4K_Upscale_Denoise_CNN_x2_VL.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x2.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x4.glsl:${pkgs.anime4k}/Anime4K_Restore_CNN_M.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_M.glsl"; show-text "Anime4K: Mode C+A (HQ)"'';
+      "CTRL+0" = ''
+        no-osd change-list glsl-shaders clr ""; show-text "GLSL shaders cleared"'';
+    };
+    scripts = with pkgs.mpvScripts;
+      [
+        mpris
+        # autoload
+        youtube-upnext
+        memo
+        uosc
+        webtorrent-mpv-hook
+        # thumbfast
+        sponsorblock
+      ]
+      ++ (with pkgs; [mpv-youtube-search]);
   };
 }
-

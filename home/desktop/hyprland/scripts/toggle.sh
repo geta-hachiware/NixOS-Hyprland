@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-icons="$HOME/.config/swaync/icons"
+icons="$HOME/.geta/home/desktop/swaync/icons"
 
 toggle_animations(){
     animations=$(hyprctl -j getoption animations:enabled | jq ".int")

@@ -21,16 +21,17 @@
           "custom/separator#blank_2"
           "hyprland/workspaces#kanji"
           "custom/separator#blank_2"
-          "mpris"
           "custom/swaync"
-          "tray"
+          "group/tray"
+          "mpris"
           "cava"
         ];
         modules-center = [
           "clock"
           "hyprland/window"
         ];
-        modules-right = [
+        modules-right = [ 
+          "privacy"
           "group/motherboard"
           "custom/separator#blank_2"
           "group/laptop"
@@ -44,7 +45,8 @@
         "hyprland/workspaces#kanji" = {
           disable-scroll = true;
           all-outputs = true;
-          format = "{icon}";
+          show-special = true;
+          format = "{icon} <span font_size='8pt'>{windows}</span>";
           persistent-workspaces = {
             "1" = [];
             "2" = [];
@@ -64,6 +66,40 @@
             "9" = "九";
             "10" = "十";
           };
+          "window-rewrite-default" = "";
+			    "window-rewrite" = {
+				    "class<firefox>" = "";
+					  "class<firefox> title<.*github.*>" = "";			
+					  "class<firefox> title<.*youtube.*>" = "";
+					  "class<firefox> title<Picture-in-Picture>" = "";
+				    "sterminal" = "";
+            "kitty" = "";
+            "ghostty" = "";
+            "alacritty" = "";
+					  "class<kitty> title<vim.*>" = "";
+				    "class<UnrealEditor> title<.+>" = "<span font_size='10pt'>󰦱</span>";
+				    "class<UnrealEditor> title<>" = "";
+				    "class<io.github.achetagames.epic_asset_manager>" = "";
+            "obsidian" = "󰠮";
+            "thunar" = "";
+            "spotify" = "";
+				    "code" = "󰨞";
+				    "title<btop>" = "󰊚";
+				    "KeePassXC" = "";
+				    "Rofi" = "";
+            "music" = "";
+            "nautilus" = "";
+            "Qalculate!" = "";
+            "com.stremio.stremio" = "󱜅";
+            "steam" = "";
+            "discord" = "";
+            "heroic" = "";
+				    "hl2_linux" = "";
+				    "class<Minecraft Launcher" = "";
+					  "class<(Minecraft\\s\\d\\.\\d+\\.\\d+)>" = "";
+				    "class<(steam_proton)>" = "";
+				    "class<(steam_app_.*)>" = "";
+			    };
         };
 
         # GROUP
@@ -93,6 +129,16 @@
           ];	
         };
 
+        "group/tray" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 500;
+            transition-left-to-right = true;
+			   	  children-class = "tray-element";
+          };
+          modules = ["custom/tray-icon" "tray"];
+	    	};
+
         backlight = {
           interval = 2;
           align = 0;
@@ -107,10 +153,11 @@
           on-click-middle = "";
           on-click-right = "";
           on-update = "";
-          on-scroll-up = "~/.config/hypr/scripts/Brightness.sh --inc";
-          on-scroll-down = "~/.config/hypr/scripts/Brightness.sh --dec";
+          on-scroll-up = "~/.geta/home/desktop/hyprland/scripts/Brightness.sh --inc";
+          on-scroll-down = "~/.geta/home/desktop/hyprland/scripts/Brightness.sh --dec";
           smooth-scrolling-threshold = 1;
         };
+
         battery = {
           #interval = 5;
           align = 0;
@@ -134,7 +181,7 @@
           format-time = "{H}h {M}min";
           tooltip = true;
           tooltip-format = "{timeTo} {power}w";
-          on-click-right = "~/.config/hypr/scripts/wlogout.sh";
+          on-click-right = "~/.geta/home/desktop/hyprland/scripts/wlogout.sh";
         };
 
         bluetooth = {
@@ -183,7 +230,6 @@
           format-alt-click = "click";
           format-alt = " {icon0} {icon1} {icon2} {icon3} {usage}% 󰍛";
           format-icons = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
-          on-click = "gnome-system-monitor";
         };
 
         # Disk
@@ -254,14 +300,16 @@
 
         mpris = {
           interval = 10;
-          format = "{player_icon} « {artist} - {title} »";
+          format = "{player_icon} {artist} - {title}";
           format-paused = "{status_icon} [{artist} - {title}]";
+          artist-len = 15;
+          title-len = 20;
           on-click-middle = "playerctl play-pause";
           on-click = "playerctl previous";
           on-click-right = "playerctl next";
           scroll-step = 5.0;
-          on-scroll-up = "~/.config/hypr/scripts/volume_control.sh --inc";
-          on-scroll-down = "~/.config/hypr/scripts/volume_control.sh --dec";
+          on-scroll-up = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --inc";
+          on-scroll-down = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --dec";
           smooth-scrolling-threshold = 1;
           player-icons = {
 				    chromium = "";
@@ -324,10 +372,10 @@
             ignored-sinks = ["Easy Effects Sink"];
           };
           scroll-step = 5.0;
-          on-click-right = "~/.config/hypr/scripts/volume_control.sh --toggle";
+          on-click-right = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --toggle";
           on-click = "pavucontrol -t 3";
-          on-scroll-up = "~/.config/hypr/scripts/volume_control.sh --inc";
-          on-scroll-down = "~/.config/hypr/scripts/volume_control.sh --dec";
+          on-scroll-up = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --inc";
+          on-scroll-down = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --dec";
 	        tooltip-format = "{icon} {desc} | {volume}%";
           smooth-scrolling-threshold = 1;
         };
@@ -336,32 +384,29 @@
           format = "{format_source}";
           format-source = " {volume}%";
           format-source-muted = "";
-          on-click-right = "~/.config/hypr/scripts/volume_control.sh --toggle-mic";
+          on-click-right = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --toggle-mic";
           on-click = "pavucontrol -t 4";
-          on-scroll-up = "~/.config/hypr/scripts/volume_control.sh --mic-inc";
-          on-scroll-down = "~/.config/hypr/scripts/volume_control.sh --mic-dec";
+          on-scroll-up = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --mic-inc";
+          on-scroll-down = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --mic-dec";
 	        tooltip-format = "{source_desc} | {source_volume}%";
           scroll-step = 5;
         };
 
         # Temperature
         temperature = {
-          interval = 10;
-          tooltip = true;
-          hwmon-path = [ "/sys/class/hwmon/hwmon1/temp1_input" "/sys/class/thermal/thermal_zone0/temp" ];
-          critical-threshold = 82;
-          format-critical = "{temperatureC}°C {icon}";
-          format = "{temperatureC}°C {icon}";
-          format-icons = ["󰈸"];
+          critical-threshold = 80;
+          format = "{temperatureC}° ";
+		      hwmon-path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input";
+          tooltip-format = "CPU: {temperatureC}°C";
         };
 
         "wireplumber" = {
           format = "{icon} {volume} %";
           format-muted = " Mute";
-          on-click-right = "~/.config/hypr/scripts/volume_control.sh --toggle";
+          on-click-right = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --toggle";
           on-click = "pavucontrol -t 3";
-          on-scroll-up = "~/.config/hypr/scripts/volume_control.sh --inc";
-          on-scroll-down = "~/.config/hypr/scripts/volume_control.sh --dec";
+          on-scroll-up = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --inc";
+          on-scroll-down = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --dec";
           format-icons = [ "" "" "󰕾" "" ];
         };
 
@@ -378,10 +423,46 @@
           ];
         };
 
+        "custom/tray-icon" = {
+          format = "";
+          tooltip = true;
+		      tooltip-format = "Tray"; 
+			    rotate = 90;
+	      };
+
         "tray" = {
           icon-size = 15;
           spacing = 8;
         };
+
+        "privacy" = {
+			    icon-spacing = 10;
+			    icon-size = 13;
+			    transition-duration = 250;
+			    modules = [
+				    {
+					   type = "screenshare";
+					   tooltip = true;
+					   tooltip-icon-size = 24;
+				    }
+				    {
+					   type = "audio-in";
+					   tooltip = true;
+					   tooltip-icon-size = 24;
+				    }
+			    ];
+			    ignore-monitor = true;
+			    ignore = [
+				    {
+					   type = "audio-in";
+					   name = "cava";
+            }
+				    {
+					   type = "screenshare";
+					   name = "obs";
+				    }
+			    ];
+		    };
 
         "custom/menu" = {
           format = "{}";
@@ -389,8 +470,8 @@
           interval = 86400; # once every day
           tooltip = true;
           on-click = "~/.geta/home/rofi/launcher/launcher.sh";
-          on-click-middle = "~/.geta/Scripts/wal.sh";
-          on-click-right = "~/.config/hypr/scripts/WaybarLayout.sh";
+          on-click-middle = "~/.geta/home/rofi/Wallpaperselect/wallpaper.sh";
+          on-click-right = "~/.geta/home/desktop/hyprland/scripts/clipManager.sh";
         };
 
         "cava" = {
@@ -418,15 +499,15 @@
           on-click = "playerctl previous";
           on-click-right = "playerctl next";
           scroll-step = 5.0;
-          on-scroll-up = "~/.config/hypr/scripts/volume_control.sh --inc";
-          on-scroll-down = "~/.config/hypr/scripts/volume_control.sh --dec";
+          on-scroll-up = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --inc";
+          on-scroll-down = "~/.geta/home/desktop/hyprland/scripts/volume_control.sh --dec";
           smooth-scrolling-threshold = 1;
         };
 
         "custom/power" = {
           format = "⏻ ";
           exec = "echo ; echo 󰟡 power # blur";
-          on-click = "~/.config/hypr/scripts/wlogout.sh";
+          on-click = "~/.geta/home/desktop/hyprland/scripts/wlogout.sh";
           interval = 86400; # once every day
           tooltip = true;
         };
@@ -450,18 +531,6 @@
           on-click = "sleep 0.1 && swaync-client -t -sw";
           on-click-right = "swaync-client -d -sw";
           escape = true;
-        };
-
-        "custom/weather" = {
-          format = "{}";
-          format-alt = "{alt}: {}";
-          format-alt-click = "click";
-          interval = 3600;
-          return-type = "json";
-          exec = "~/.config/hypr/scripts/Weather.sh";
-          #exec = "~/.config/hypr/scripts/Weather.py";
-          exec-if = "ping wttr.in -c1";
-          tooltip = true;
         };
 
         # Separator

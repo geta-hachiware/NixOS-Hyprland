@@ -54,6 +54,13 @@
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
+
+      overlays = {
+      nixpkgs.overlays = with inputs; [
+        assets.overlays.default
+        (import ./pkgs)
+      ];
+    };
     in {
       nixosConfigurations = {
         nixos = lib.nixosSystem {

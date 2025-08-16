@@ -48,7 +48,7 @@
     ffmpegthumbnailer
     imagemagick
     swappy
-    nsxiv
+    imv
 
     # GTK / GUI / Theming
     libnotify
@@ -85,24 +85,13 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".config/hypr/scripts/volume_control.sh".source = ./desktop/hyprland/scripts/volume_control.sh;
-    ".config/hypr/scripts/volume_control.sh".executable = true;
-    ".config/hypr/scripts/Brightness.sh".source = ./desktop/hyprland/scripts/Brightness.sh;
-    ".config/hypr/scripts/Brightness.sh".executable = true;
-    ".config/hypr/scripts/wlogout.sh".source = ./desktop/hyprland/scripts/wlogout.sh;
-    ".config/hypr/scripts/wlogout.sh".executable = true;
-    ".config/hypr/scripts/toggle.sh".source = ./desktop/hyprland/scripts/toggle.sh;
-    ".config/hypr/scripts/toggle.sh".executable = true;
     ".config/hypr/scripts/screenshot.sh".source = ./desktop/hyprland/scripts/screenshot.sh;
     ".config/hypr/scripts/screenshot.sh".executable = true;
-    ".config/hypr/scripts/media_control.sh".source = ./desktop/hyprland/scripts/media_control.sh;
-    ".config/hypr/scripts/media_control.sh".executable = true;
     ".config/hypr/scripts/Sounds.sh".source = ./desktop/hyprland/scripts/Sounds.sh;
     ".config/hypr/scripts/Sounds.sh".executable = true;
     ".config/hypr/scripts/clipManager.sh".source = ./desktop/hyprland/scripts/clipManager.sh;
     ".config/hypr/scripts/clipManager.sh".executable = true;
-    ".config/hypr/scripts/songdetails.sh".source = ./desktop/hyprland/scripts/songdetails.sh;
-    ".config/hypr/scripts/songdetails.sh".executable = true;
+
     ".config/hypr/hyprlock.conf".source = ./desktop/hyprland/templates/hyprlock.conf;
     ".config/hypr/hypridle.conf".source = ./desktop/hyprland/templates/hypridle.conf;
 

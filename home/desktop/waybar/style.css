@@ -109,6 +109,7 @@ tooltip {
 #keyboard-state,
 #memory,
 #mode,
+#tray,
 #mpris,
 #network,
 #pulseaudio,
@@ -116,7 +117,6 @@ tooltip {
 #taskbar button,
 #taskbar,
 #temperature,
-#tray,
 #window,
 #wireplumber,
 #workspaces,
@@ -242,4 +242,27 @@ tooltip {
 #backlight-slider highlight {
 	min-width: 10px;
 	border-radius: 5px;
+}
+
+#tray #tray { /* Inner tray element. We don't want to style this.*/
+	background-color: transparent;
+	padding: 0px 5px 0px 15px;
+    box-shadow: none;
+	border: none;
+}
+#tray menu {
+	background-color: alpha(@background, 0.9);
+	border: solid 1px alpha(@color1, 0.8);
+}
+#tray menu separator {
+	background-color: alpha(@color1, 0.8);
+}
+#tray menu label {
+	color: @foreground;
+}
+#tray menu menuitem:hover {
+	background-color: @foreground;
+}
+#tray menu menuitem:hover label {
+	color: @background;
 }
