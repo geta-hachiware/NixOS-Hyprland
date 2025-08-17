@@ -50,15 +50,15 @@
       username = "nate"; 
       system = "x86_64-linux";
       lib = nixpkgs.lib;
+      overlays = [
+        (import ./pkgs)
+      ];
       pkgs = import nixpkgs {
         inherit system;
         overlays = overlays;
         config.allowUnfree = true;
       };
       pkgs-unstable = import nixpkgs-unstable { inherit system; };
-      overlays = [
-        (import ./pkgs)
-      ];
     in {
       nixosConfigurations = {
         nixos = lib.nixosSystem {
