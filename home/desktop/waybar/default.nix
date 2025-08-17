@@ -24,7 +24,6 @@
           "custom/swaync"
           "group/tray"
           "mpris"
-          "cava"
         ];
         modules-center = [
           "clock"
@@ -471,23 +470,7 @@
           tooltip = true;
           on-click = "~/.geta/home/rofi/launcher/launcher.sh";
           on-click-middle = "~/.geta/home/rofi/Wallpaperselect/wallpaper.sh";
-          on-click-right = "~/.geta/home/desktop/hyprland/scripts/clipManager.sh";
-        };
-
-        "cava" = {
-         framerate = 60;
-         autosens = 1;
-         bars = 10;
-         lower_cutoff_freq = 50;
-         higher_cutoff_freq = 10000;
-         method = "pipewire";
-         source = "auto";
-         stereo = true;
-         bar_delimiter = 0;
-         noise_reduction = 0.77;
-         input_delay = 2;
-         hide_on_silence = true;
-         format-icons = [ "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+          on-click-right = "~/.config/hypr/scripts/clipManager.sh";
         };
          
         "custom/playerctl" = {

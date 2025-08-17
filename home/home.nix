@@ -41,7 +41,6 @@
     python3
     python3Packages.requests
     inputs.nixvim.packages.${system}.default
-    vscode
 
     # Image Handling
     ffmpeg
@@ -60,8 +59,6 @@
 
     # Perfomance Monitoring
     btop
-    gnome-system-monitor
-    nvtopPackages.v3d
 
     # screenshot
     hyprshot
