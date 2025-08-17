@@ -47,24 +47,23 @@
       ...
       }@inputs:
     let
-      username = "nate";
-      lib = nixpkgs.lib;
+      username = "nate"; 
       system = "x86_64-linux";
+      lib = nixpkgs.lib;
       pkgs = import nixpkgs {
         inherit system;
+        overlays = overlays;
         config.allowUnfree = true;
       };
-      pkgs-unstable = import nixpkgs-unstable {inherit system;};
-      overlays = {
-        nixpkgs.overlays = with inputs; [
-          assets.overlays.default
-          (import ./pkgs)
-        ];
-      };
+      pkgs-unstable = import nixpkgs-unstable { inherit system; };
+      overlays = [
+        (import ./pkgs)
+      ];
     in {
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
+
           specialArgs = {
             inherit pkgs-unstable;
             inherit username inputs;
@@ -78,13 +77,13 @@
       homeConfigurations = {
         ${username} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+
           extraSpecialArgs = {
             inherit pkgs-unstable;
-            inherit username inputs;
+            inherit username system inputs;
           };
           modules = with inputs; [ 
             ./home/home.nix
-            overlays
             nixcord.homeModules.nixcord
           ];
         };

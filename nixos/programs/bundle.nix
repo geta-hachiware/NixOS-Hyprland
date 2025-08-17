@@ -4,5 +4,6 @@
     ./spicetify.nix
     ./thunar.nix
     ./gaming.nix
+    ./vscode.nix
   ];
 }
