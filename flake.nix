@@ -2,9 +2,8 @@
   description = "geta system flake";
 
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-25.05";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -39,6 +38,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       nixvim,
       spicetify-nix,
@@ -48,21 +48,25 @@
       }@inputs:
     let
       username = "nate";
+      lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = import nixpkgs {
-        inherit system overlays;
+        inherit system;
         config.allowUnfree = true;
       };
-      lib = nixpkgs.lib;
-      overlays = [
-        (import ./pkgs)
-      ];
+      pkgs-unstable = import nixpkgs-unstable {inherit system;};
+      overlays = {
+        nixpkgs.overlays = with inputs; [
+          assets.overlays.default
+          (import ./pkgs)
+        ];
+      };
     in {
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           inherit system;
-
           specialArgs = {
+            inherit pkgs-unstable;
             inherit username inputs;
           };
           modules = with inputs; [
@@ -74,12 +78,13 @@
       homeConfigurations = {
         ${username} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-
-          extraSpecialArgs = { 
-            inherit username system inputs;
+          extraSpecialArgs = {
+            inherit pkgs-unstable;
+            inherit username inputs;
           };
           modules = with inputs; [ 
             ./home/home.nix
+            overlays
             nixcord.homeModules.nixcord
           ];
         };
