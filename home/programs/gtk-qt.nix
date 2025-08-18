@@ -13,8 +13,8 @@ in {
   in {
     enable = true;
     font = {
-      name = "JetBrainsMono Nerd Font Mono";
-      size = 12;
+      name = "JetBrainsMono Nerd Font";
+      size = 10;
     };
     /*
     theme = {
@@ -49,7 +49,7 @@ in {
   };
   qt = {
     enable = true;
-    platformTheme = "gtk";
+    platformTheme.name = "gtk";
     style = {
       name = "kvantum";
     };

@@ -12,14 +12,13 @@
 
       #Start
       exec-once = [
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "waybar"
         "swaync"
         "swww-daemon"
         "nm-applet --indicator"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
+        "polkit-agent-helper-1"
       ];
 
       # Refer to https://wiki.hyprland.org/Configuring/Variables/
@@ -137,7 +136,6 @@
         "opacity 0.80 0.80,class:^(Signal)$" #Signal-Gtk
         "opacity 0.80 0.80,class:^(io.gitlab.theevilskeleton.Upscaler)$" #Upscaler-Gtk
         
-        "opacity 0.80 0.70,class:^(gnome-system-monitor)$"
         "opacity 0.80 0.70,class:^(pavucontrol)$"
         "opacity 0.80 0.70,class:^(org.pulseaudio.pavucontrol)$"
         "opacity 0.80 0.70,class:^(blueman-manager)$"
@@ -182,7 +180,6 @@
 
       windowrulev2 = [
         "opacity 1.0 override, class:^.*, fullscreen:1"
-        "idleinhibit fullscreen, class:.*"
 
         "opacity 0.95 0.75,title:^(Picture-in-Picture)$"
         "pin,title:^(Picture-in-Picture)$"
@@ -245,7 +242,7 @@
         vrr = 1; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only)
         vfr = true;
         enable_swallow = true;
-        swallow_regex = "^(ghostty|alacritty)$";
+        swallow_regex = "^(kitty|alacritty)$";
       };
       
       xwayland = {
@@ -292,9 +289,9 @@
       #Binds
       bind = [
         # Terminal App Launcher
-        "$mainMod, Return, exec, alacritty" # terminal
+        "$mainMod, Return, exec, kitty" # terminal
 	      "$mainMod, Space, exec, launcher" # app launcher
-        "$mainMod, T, exec, [float] thunar" # file manager
+        "$mainMod, T, exec, thunar" # file manager
         "$mainMod+Shift, C, exec, clipManager.sh" #clipboard
         "$mainMod, W, exec, wallpaper" # wallpaper picker
         "$mainMod+Shift, N, exec, swaync-client -t -sw" # swayNC panel

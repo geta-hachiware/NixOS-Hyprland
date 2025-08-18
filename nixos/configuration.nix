@@ -60,6 +60,7 @@
       daemon.enable = true;
     };
     keyboard.qmk.enable = true;
+    bluetooth.enable = true;
   };
 
   nix = {
@@ -100,6 +101,7 @@
 
   # Filesystems support
   boot.supportedFilesystems = ["ntfs" "exfat" "ext4" "fat32" "btrfs"];
+
   services = {
     devmon.enable = true;
     gvfs.enable = true;
@@ -116,6 +118,21 @@
     polkit.enable = true;
     #sudo.wheelNeedsPassword = false;
   };
+
+  systemd.user.services.hyprpolkitagent = {
+    description = "Hyprpolkitagent - Polkit authentication agent";
+    wantedBy = ["graphical-session.target"];
+    wants = ["graphical-session.target"];
+    after = ["graphical-session.target"];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
+  services.displayManager.defaultSession = "hyprland";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

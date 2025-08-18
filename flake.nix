@@ -32,10 +32,12 @@
       url = "github:ezKEa/aagl-gtk-on-nix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     silentSDDM = {
       url = "github:uiriansan/SilentSDDM";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nix-colors = {
       url = "github:misterio77/nix-colors";
     };
