@@ -15,8 +15,7 @@
     ./fastfetch/fastfetch.nix
     ./programs/bundle.nix
     ./pywal/pywal.nix
-    ./rofi/default.nix
-    inputs.nix-colors.homeManagerModules.default
+    ./rofi/default.nix 
   ];
      # The home.packages option allows you to install Nix packages into your
   # environment.

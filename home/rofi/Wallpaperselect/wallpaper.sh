@@ -70,6 +70,9 @@ if [[ -n "$selected" && -f "${bgresult[$selected]}" ]]; then
 
   wal -i "${bgresult[$selected]}" -q
   wal -o "$HOME/.cache/wal/colors-hyprland.conf"
+  wal -o "$HOME/.cache/wal/colors-kitty.conf"
+
+  kitty @ set-colors --all --config $HOME/.cache/wal/colors-kitty.conf
 
   cp "$HOME/.cache/wal/colors-waybar.css" "$HOME/.config/waybar/style.css"
   cp "$HOME/.cache/wal/templates/colors-swaync.ccss" "$HOME/.config/swaync/style/colors-swaync.css"

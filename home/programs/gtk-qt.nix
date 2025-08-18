@@ -13,8 +13,8 @@ in {
   in {
     enable = true;
     font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 10;
+      name = "Lekton Nerd Font Mono";
+      size = 12;
     };
     /*
     theme = {

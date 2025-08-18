@@ -97,6 +97,7 @@
           modules = with inputs; [ 
             ./home/home.nix
             nixcord.homeModules.nixcord
+            nix-colors.homeManagerModules.default
           ];
         };
       };

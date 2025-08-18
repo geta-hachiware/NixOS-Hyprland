@@ -11,9 +11,9 @@
       # Theme for catppuccin
       # colorScheme = "mocha";
       # colorScheme = "Spotify";
-      # colorScheme = "Spicetify";
+        colorScheme = "Spicetify";
       # colorScheme = "RosePine";
-        colorScheme = "CatppuccinMocha";
+      # colorScheme = "CatppuccinMocha";
       # colorScheme = "TokyoNight";
       #  colorScheme = "Storm";
       # Theme for dynamic
