@@ -9,11 +9,6 @@
     wirelesstools
     iputils
     polkit_gnome
-    bibata-cursors
-    sddm-astronaut # Overlayed
-    pkgs.kdePackages.qtsvg
-    pkgs.kdePackages.qtmultimedia
-    pkgs.kdePackages.qtvirtualkeyboard
   ];
 
   services.flatpak.enable = true;

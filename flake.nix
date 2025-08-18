@@ -32,6 +32,17 @@
       url = "github:ezKEa/aagl-gtk-on-nix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   outputs =
@@ -71,6 +82,7 @@
           modules = with inputs; [
             ./nixos/configuration.nix
             spicetify-nix.nixosModules.default
+            stylix.nixosModules.stylix
           ];
         };
       };

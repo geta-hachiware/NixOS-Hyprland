@@ -9,8 +9,7 @@
       osc = "no";
       osd-bar = "no";
       profile = "gpu-hq";
-      vo = "gpu-next";
-      gpu-api = "vulkan";
+      vo = "gpu";
       loop-file = "inf";
       hwdec = "nvdec";
       scale = "ewa_lanczossharp";

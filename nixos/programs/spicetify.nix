@@ -4,15 +4,16 @@
   in {
     programs.spicetify = {
       enable = true;
-        theme = spicePkgs.themes.catppuccin;
+        theme = spicePkgs.themes.text;
+      # theme = spicePkgs.themes.catppuccin;
       # theme = spicePkgs.themes.TokyoNight;
       # theme = spicePkgs.themes.defaultDynamic
       # Theme for catppuccin
-        colorScheme = "mocha";
+      # colorScheme = "mocha";
       # colorScheme = "Spotify";
       # colorScheme = "Spicetify";
       # colorScheme = "RosePine";
-      # colorScheme = "CatppuccinMocha";
+        colorScheme = "CatppuccinMocha";
       # colorScheme = "TokyoNight";
       #  colorScheme = "Storm";
       # Theme for dynamic
@@ -31,9 +32,17 @@
           popupLyrics
           beautifulLyrics
           fullAppDisplay
+          powerBar
+          listPlaylistsWithSong
+          volumePercentage
+          autoSkipExplicit
           # autoVolume
           # showQueueDuration
           # hidePodcasts
+        ];
+        enabledCustomApps = with spicePkgs.apps; [
+          lyricsPlus
+          newReleases
         ];
   };
 }
