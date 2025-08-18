@@ -36,6 +36,9 @@
       url = "github:uiriansan/SilentSDDM";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-colors = {
+      url = "github:misterio77/nix-colors";
+    };
   };
 
   outputs =
@@ -51,8 +54,10 @@
       ...
       }@inputs:
     let
-      username = "nate"; 
+      username = "nate";
+      theme = "black-metal-burzum";
       system = "x86_64-linux";
+
       lib = nixpkgs.lib;
       overlays = [
         (import ./pkgs)
@@ -85,6 +90,7 @@
           extraSpecialArgs = {
             inherit pkgs-unstable;
             inherit username system inputs;
+            inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
           };
           modules = with inputs; [ 
             ./home/home.nix

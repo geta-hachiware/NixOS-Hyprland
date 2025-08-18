@@ -14,6 +14,7 @@ in  {
    services.displayManager.sddm = {
       package = pkgs.kdePackages.sddm; # use qt6 version of sddm
       enable = true;
+      wayland.enable = true;
       theme = sddm-theme.pname;
       # the following changes will require sddm to be restarted to take
       # effect correctly. It is recomend to reboot after this

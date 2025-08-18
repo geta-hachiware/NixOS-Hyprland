@@ -1,6 +1,7 @@
-{ config, pkgs, inputs, system, username, lib, ... }:
+{ config, pkgs, inputs, system, username, lib, theme, ... }:
 
 {
+  colorScheme = inputs.nix-colors.colorSchemes."${theme}";
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = username;
@@ -14,7 +15,8 @@
     ./fastfetch/fastfetch.nix
     ./programs/bundle.nix
     ./pywal/pywal.nix
-    ./rofi/default.nix 
+    ./rofi/default.nix
+    inputs.nix-colors.homeManagerModules.default
   ];
      # The home.packages option allows you to install Nix packages into your
   # environment.
