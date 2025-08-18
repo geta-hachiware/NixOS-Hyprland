@@ -10,5 +10,6 @@
     ./git.nix
     ./gtk-qt.nix
     ./kitty.nix
+    ./yazi.nix
   ];
 }

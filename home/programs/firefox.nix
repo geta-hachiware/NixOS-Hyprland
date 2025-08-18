@@ -163,6 +163,11 @@ in {
                   keyword = "we";
                   url = "https://web.whatsapp.com";
                 }
+                {
+                  name = "Pixiv";
+                  keyword = "px";
+                  url = "https://pixiv.net";
+                }
               ]; 
             }
           ];

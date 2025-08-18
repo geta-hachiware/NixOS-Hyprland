@@ -17,6 +17,7 @@
 
       v = "nvim";
       ff = "fastfetch";
+      sy = "sudo yazi";
     };
 
     history = {

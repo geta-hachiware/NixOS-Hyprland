@@ -4,14 +4,14 @@
   in {
     programs.spicetify = {
       enable = true;
-        theme = spicePkgs.themes.text;
-      # theme = spicePkgs.themes.catppuccin;
+      # theme = spicePkgs.themes.text;
+        theme = spicePkgs.themes.catppuccin;
       # theme = spicePkgs.themes.TokyoNight;
       # theme = spicePkgs.themes.defaultDynamic
       # Theme for catppuccin
-      # colorScheme = "mocha";
+        colorScheme = "mocha";
       # colorScheme = "Spotify";
-        colorScheme = "Spicetify";
+      # colorScheme = "Spicetify";
       # colorScheme = "RosePine";
       # colorScheme = "CatppuccinMocha";
       # colorScheme = "TokyoNight";
