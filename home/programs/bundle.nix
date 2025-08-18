@@ -9,5 +9,7 @@
     ./vscode.nix
     ./xdg.nix
     ./git.nix
+    ./gtk-qt.nix
+    ./neovim.nix
   ];
 }

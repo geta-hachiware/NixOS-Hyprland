@@ -13,7 +13,7 @@ in {
   in {
     enable = true;
     font = {
-      name = "Lekton Nerd Font Mono";
+      name = "JetBrainsMono Nerd Font Mono";
       size = 12;
     };
     /*
@@ -37,8 +37,8 @@ in {
     };
 
     iconTheme = {
-      name = "faba-icon-theme";
-      package = pkgs.faba-icon-theme;
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
     };
     gtk3 = {
       inherit extraConfig;
@@ -52,11 +52,6 @@ in {
     platformTheme = "gtk";
     style = {
       name = "kvantum";
-    };
-  };
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
     };
   };
 

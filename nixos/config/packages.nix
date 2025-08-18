@@ -8,6 +8,9 @@
     iproute2
     wirelesstools
     iputils
+    kdePackages.qtmultimedia
+    kdePackages.qtsvg
+    kdePackages.qtvirtualkeyboard
   ];
 
   services.flatpak.enable = true;

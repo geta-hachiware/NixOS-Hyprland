@@ -5,9 +5,10 @@
 }: let
    # an exhaustive example can be found in flake.nix
    sddm-theme = inputs.silentSDDM.packages.${pkgs.system}.default.override {
-      theme = "rei"; # select the config of your choice
+      theme = "ken"; # select the config of your choice
    };
 in  {
+   services.xserver.enable = true; # Enable the X11 windowing system.
    # include the test package which can be run using test-sddm-silent
    environment.systemPackages = [sddm-theme sddm-theme.test];
    qt.enable = true;
@@ -15,6 +16,7 @@ in  {
       package = pkgs.kdePackages.sddm; # use qt6 version of sddm
       enable = true;
       wayland.enable = true;
+      enableHidpi = true;
       theme = sddm-theme.pname;
       # the following changes will require sddm to be restarted to take
       # effect correctly. It is recomend to reboot after this

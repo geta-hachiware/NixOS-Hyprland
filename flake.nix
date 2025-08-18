@@ -89,7 +89,7 @@
 
           extraSpecialArgs = {
             inherit pkgs-unstable;
-            inherit username system inputs;
+            inherit username system theme inputs;
             inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
           };
           modules = with inputs; [ 
