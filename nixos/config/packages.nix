@@ -8,7 +8,6 @@
     iproute2
     wirelesstools
     iputils
-    polkit_gnome
   ];
 
   services.flatpak.enable = true;

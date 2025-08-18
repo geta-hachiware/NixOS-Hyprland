@@ -11,7 +11,6 @@ in  {
    # include the test package which can be run using test-sddm-silent
    environment.systemPackages = [sddm-theme sddm-theme.test];
    qt.enable = true;
-   services.xserver.enable = true;
    services.displayManager.sddm = {
       package = pkgs.kdePackages.sddm; # use qt6 version of sddm
       enable = true;
@@ -21,7 +20,7 @@ in  {
       extraPackages = sddm-theme.propagatedBuildInputs;
       settings = {
         # required for styling the virtual keyboard
-      General = {
+        General = {
           GreeterEnvironment = "QML2_IMPORT_PATH=${sddm-theme}/share/sddm/themes/${sddm-theme.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard";
           InputMethod = "qtvirtualkeyboard";
         };
