@@ -1,7 +1,7 @@
-{ config, pkgs, inputs, system, username, lib, theme, ... }:
+{ config, pkgs, inputs, system, username, lib, ... }:
 
 {
-  colorScheme = inputs.nix-colors.colorSchemes."${theme}";
+  #colorScheme = inputs.nix-colors.colorSchemes."${theme}";
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = username;
@@ -49,6 +49,9 @@
     imagemagick
     swappy
     imv
+
+    # Drawing
+    krita
 
     # GTK / GUI / Theming
     libnotify

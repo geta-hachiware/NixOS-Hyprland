@@ -163,6 +163,21 @@ in {
                   keyword = "px";
                   url = "https://pixiv.net";
                 }
+                {
+                  name = "Tiktok";
+                  keyword = "tt";
+                  url = "https://tiktok.com";
+                }
+                {
+                  name = "Pinterest";
+                  keyword = "pt";
+                  url = "https://pinterest.com";
+                }
+                {
+                  name = "MangaDex";
+                  keyword = "md";
+                  url = "https://mangadex.org";
+                }
               ]; 
             }
           ];

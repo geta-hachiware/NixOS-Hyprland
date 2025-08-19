@@ -38,12 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-colors = {
-      url = "github:misterio77/nix-colors";
-    };
-
     textfox = {
       url = "github:adriankarlen/textfox";
+    };
+    stylix = {
+      url = "github:danth/stylix";
     };
   };
 
@@ -62,7 +61,6 @@
       }@inputs:
     let
       username = "nate";
-      theme = "black-metal-burzum";
       system = "x86_64-linux";
 
       lib = nixpkgs.lib;
@@ -87,6 +85,7 @@
           modules = with inputs; [
             ./nixos/configuration.nix
             spicetify-nix.nixosModules.default
+            stylix.nixosModules.stylix
           ];
         };
       };
@@ -96,13 +95,11 @@
 
           extraSpecialArgs = {
             inherit pkgs-unstable;
-            inherit username system theme inputs;
-            inherit (inputs.nix-colors.lib-contrib {inherit pkgs;}) gtkThemeFromScheme;
+            inherit username system inputs;
           };
           modules = with inputs; [ 
             ./home/home.nix
             nixcord.homeModules.nixcord
-            nix-colors.homeManagerModules.default
             textfox.homeManagerModules.default
           ];
         };

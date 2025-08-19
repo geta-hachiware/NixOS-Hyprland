@@ -9,5 +9,6 @@
     ./packages.nix
     ./steam.nix
     ./sessionvariables.nix
+    ./stylix.nix
   ];
 }
