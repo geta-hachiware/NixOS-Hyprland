@@ -7,7 +7,7 @@
     settings = {
       logo = {
         type = "auto";
-        source = ./Akame.jpg;
+        source = ./ascii-fetch;
         width = 39;
         height = 15;
       };

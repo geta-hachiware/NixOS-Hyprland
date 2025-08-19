@@ -10,18 +10,12 @@
     rev = "09dd87a3abcb15a88798941e5ed74e4aa593108c";
     hash = "sha256-Uu/a5t74GGvMIJP5tptqbiFiA+x2hw98irPdl8ynGoE=";
   };
-  lepton = pkgs.fetchFromGitHub {
-    owner = "black7375";
-    repo = "Firefox-UI-Fix";
-    rev = "7d96af3abec66fc10bb412d0368b04a505199eac";
-    hash = "sha256-JEJnmYjY9I0I8rxYVQLMjiayk6PnKq/eptZD8GvaDBo=";
-  };
 in {
     programs.firefox = {
     enable = true;
     nativeMessagingHosts = [pkgs.tridactyl-native];
     profiles = {
-      ${username} = {
+      "${username}" = {
         id = 0;
         isDefault = true;
         name = username;
@@ -40,11 +34,11 @@ in {
           search-by-image
           tridactyl
           ublock-origin
+          firefox-color
           inputs.firefox-addons.packages.${pkgs.system}."10ten-ja-reader"
         ];
         settings = {
           # GENERAL
-          "browser.startup.page" = "https://71zenith.github.io/";
           "browser.display.use_document_fonts" = 0;
           "browser.ctrlTab.sortByRecentlyUsed" = false;
           "browser.theme.toolbar-theme" = 0;
@@ -52,6 +46,7 @@ in {
           "extensions.autoDisableScopes" = 0;
           "extensions.allowPrivateBrowsingByDefault" = true;
           "browser.toolbars.bookmarks.visibility" = "never";
+
 
           # TELEMETRY
           "browser.ping-centre.telemetry" = false;
@@ -180,7 +175,7 @@ in {
             "Brave" = {
               urls = [{template = "https://search.brave.com/search?q={searchTerms}";}];
               definedAliases = ["@b"];
-              iconUpdateURL = "https://brave.com/static-assets/images/brave-logo-sans-text.svg";
+              icon = "https://brave.com/static-assets/images/brave-logo-sans-text.svg";
             };
             "GitHub" = {
               urls = [{template = "https://github.com/search?q={searchTerms}&type=code";}];
@@ -197,7 +192,7 @@ in {
               definedAliases = ["@no"];
             };
             "YouTube" = {
-              iconUpdateURL = "https://youtube.com/favicon.ico";
+              icon = "https://youtube.com/favicon.ico";
               updateInterval = 24 * 60 * 60 * 1000;
               urls = [{template = "https://www.youtube.com/results?search_query={searchTerms}";}];
               definedAliases = ["@yt"];
@@ -220,15 +215,27 @@ in {
           ${builtins.readFile "${betterfox}/Fastfox.js"}
           ${builtins.readFile "${betterfox}/Peskyfox.js"}
           ${builtins.readFile "${betterfox}/Smoothfox.js"}
-          ${builtins.readFile "${lepton}/user.js"}
-        '';
-        userChrome = ''
-          @import "${lepton}/userChrome.css";
-        '';
-        userContent = ''
-          @import "${lepton}/userContent.css";
         '';
       };
     };
+  };
+  textfox = {
+      enable = true;
+      profile = username;
+      config = {
+      # Optional config
+        displayNavButtons = true;
+        displayUrlbarIcons = true;
+        displaySidebarTools = false;
+        displayTitles = true;
+        newtabLogo = "⠀⠀⡤⡴⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\A⠀⠀⢣⡱⡻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀\A⠀⢀⠤⠆⠃⢃⠀⢤⡀⠀⠀⠀⡋⠒⠒⠒⠊⢙⡀⠀⠀⠀⡀⠃⠈⠂⠀⠊⢳⠀\A⡰⢁⠊⠁⠀⠀⡈⢦⠹⡄⢰⠁⠀⠀⠀⠐⠂⠀⠈⡆⢠⠎⠙⠒⠊⠙⠆⠤⠴⡄\A⡇⢠⣤⠛⢀⣨⠛⡒⠆⡇⠆⢠⠶⡍⢠⠄⠐⣛⠆⡐⢸⢰⢴⠛⢃⡐⢿⣀⡀⢸\A⠘⢄⠀⠀⠀⠀⠀⠀⠰⠁⢘⠦⠀⠀⠀⠃⠀⠀⠐⡃⠀⡆⠀⠀⠈⠁⠀⠀⢶⠆\A⠀⠠⣦⠀⠀⠀⠀⢀⠟⠁⠀⠉⣆⠀⠀⠀⠀⢀⠆⠀⠀⠀⣄⠀⠀⠀⠀⢀⠧⡄\A⠀⠀⠢⠑⠢⣤⠲⠈⠀⠀⠀⠀⠈⠑⠒⢣⡄⠁⠀⠀⠀⠀⠚⠒⠦⠤⡴⠊⠉";
+        tabs.vertical = {
+          margin = "1.0rem";
+        };
+        font = { 
+          family = "Lekton";
+          size = "15px";
+        };
+      };
   };
 }

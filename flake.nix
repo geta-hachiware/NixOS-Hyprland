@@ -41,6 +41,10 @@
     nix-colors = {
       url = "github:misterio77/nix-colors";
     };
+
+    textfox = {
+      url = "github:adriankarlen/textfox";
+    };
   };
 
   outputs =
@@ -53,6 +57,7 @@
       spicetify-nix,
       nixcord,
       aagl,
+      textfox,
       ...
       }@inputs:
     let
@@ -98,6 +103,7 @@
             ./home/home.nix
             nixcord.homeModules.nixcord
             nix-colors.homeManagerModules.default
+            textfox.homeManagerModules.default
           ];
         };
       };
